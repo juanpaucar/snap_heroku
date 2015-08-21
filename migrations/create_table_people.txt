@@ -1,0 +1,15 @@
+Description: Create table people
+Created: 2015-08-21 16:20:43.170487 UTC
+Depends: 
+Apply:
+  CREATE TABLE people (
+    id serial NOT NULL,
+    name varchar NOT NULL,
+    age integer NOT NULL
+  );
+
+  ALTER TABLE people ADD PRIMARY KEY (id);
+  CREATE INDEX people_idx ON people (id);
+
+Revert:
+  DROP TABLE people;

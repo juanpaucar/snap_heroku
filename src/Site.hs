@@ -24,6 +24,7 @@ import           Heist
 import qualified Heist.Interpreted as I
 ------------------------------------------------------------------------------
 import           Application
+import           Web.Person (getPersonHandler)
 
 
 ------------------------------------------------------------------------------
@@ -66,6 +67,7 @@ routes :: [(ByteString, Handler App App ())]
 routes = [ ("/login",    with auth handleLoginSubmit)
          , ("/logout",   with auth handleLogout)
          , ("/new_user", with auth handleNewUser)
+         , ("/person", ifTop $ method GET getPersonHandler)
          , ("",          serveDirectory "static")
          ]
 
